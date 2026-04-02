@@ -1,0 +1,5 @@
+- [x] Raw data preview is hidden inside a collapsible expander.
+- [x] The app uses a tabbed layout (`st.tabs`) for the analysis results.
+- [x] The Executive Summary tab clearly shows the failure mode, financial risk, and the download report button.
+- [x] The Technical Diagnostics tab features a Plotly chart with clearly highlighted anomaly markers (red markers over the time series).
+- [x] The E2E tests still pass without timeout issues after the UI changes.

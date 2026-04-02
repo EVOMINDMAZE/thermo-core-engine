@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: thermo-core-engine
+    env: docker
+    plan: free

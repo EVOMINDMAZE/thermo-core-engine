@@ -1,0 +1,6 @@
+- [x] `.streamlit/config.toml` includes `maxMessageSize = 1024`.
+- [x] "Raw Data Preview" is truncated to the first 1000 rows.
+- [x] `render_tech_diag` dynamically handles missing sensor columns (e.g., missing `vibration`) without raising a `KeyError`.
+- [x] Peak Values table, Radar Chart, and Detailed Sensor Trends dynamically render based on the available sensor columns.
+- [x] Plotly line charts automatically downsample the background data if it exceeds 10,000 points to prevent browser crashes.
+- [x] All unit and E2E tests pass.

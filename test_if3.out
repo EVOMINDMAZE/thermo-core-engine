@@ -1,0 +1,14 @@
+Generating data...
+2026-04-01 16:08:09,618 - thermoneural.models.anomaly - INFO - Initializing AnomalyDetector with contamination=auto, random_state=42
+Running for Asset-1...
+2026-04-01 16:08:09,619 - thermoneural.models.anomaly - INFO - Starting fit_predict on dataset of shape (720, 7)
+2026-04-01 16:08:09,619 - thermoneural.models.anomaly - INFO - Using specified features: ['temperature', 'pressure', 'vibration', 'current']
+2026-04-01 16:08:09,624 - thermoneural.models.anomaly - INFO - Dynamically calculated contamination: 0.3589 (variance=17.48, kurtosis=30.89)
+2026-04-01 16:08:09,703 - thermoneural.models.anomaly - INFO - Anomaly detection complete. Found 259 anomalies.
+Done for Asset-1
+Running for Asset-2...
+2026-04-01 16:08:09,704 - thermoneural.models.anomaly - INFO - Starting fit_predict on dataset of shape (720, 7)
+2026-04-01 16:08:09,704 - thermoneural.models.anomaly - INFO - Using specified features: ['temperature', 'pressure', 'vibration', 'current']
+2026-04-01 16:08:09,707 - thermoneural.models.anomaly - INFO - Dynamically calculated contamination: 0.3226 (variance=13.79, kurtosis=27.26)
+2026-04-01 16:08:09,787 - thermoneural.models.anomaly - INFO - Anomaly detection complete. Found 232 anomalies.
+Done for Asset-2

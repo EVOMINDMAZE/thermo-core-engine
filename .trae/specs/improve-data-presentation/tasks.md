@@ -1,0 +1,12 @@
+# Tasks
+- [x] Task 1: Refactor UI Layout
+  - [x] SubTask 1.1: Move the "Raw Data Preview" `st.dataframe` into an `st.expander` so it is hidden by default.
+  - [x] SubTask 1.2: Implement `st.tabs` ("Executive Summary", "Technical Diagnostics") to organize the analysis output.
+- [x] Task 2: Enhance Executive Summary Tab
+  - [x] SubTask 2.1: Place the Critical Alert banner and Metric columns (Status, Confidence, ETF, Risk) inside the first tab.
+  - [x] SubTask 2.2: Place the Recommended Actions inside this tab.
+  - [x] SubTask 2.3: Move the Report Generation and PDF download button to the bottom of the Executive Summary tab for easy access.
+- [x] Task 3: Upgrade Data Visualization
+  - [x] SubTask 3.1: Remove `st.line_chart`.
+  - [x] SubTask 3.2: Create a custom interactive Plotly figure that plots Temperature and Vibration as separate lines or subplots, explicitly overlaying red markers on timestamps where `is_anomaly == True`.
+  - [x] SubTask 3.3: Place this new Plotly chart and the existing Anomaly Score scatter plot into the "Technical Diagnostics" tab.

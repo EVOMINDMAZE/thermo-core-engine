@@ -1,0 +1,6 @@
+- [x] `AnomalyDetector` successfully generates `_diff` and `_var` features for context-aware machine learning.
+- [x] `AnomalyDetector` can be saved to and loaded from a `.joblib` file.
+- [x] Contiguous anomalous data points are successfully grouped into distinct "Incidents".
+- [x] A `rules.yaml` file exists and drives the `expert_system.py` logic dynamically.
+- [x] `pyproject.toml` is updated with necessary dependencies (e.g., `pyyaml`, `joblib`).
+- [x] All unit and E2E tests pass, covering the new feature engineering, windowing, and YAML rule logic.

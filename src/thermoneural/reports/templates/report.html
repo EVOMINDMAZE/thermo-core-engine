@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Thermoneural Report</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .header h1 {
+            color: #2c3e50;
+            margin: 0;
+            font-size: 28px;
+        }
+        .header .meta {
+            text-align: right;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        h2 {
+            color: #2980b9;
+            font-size: 20px;
+            margin-top: 30px;
+            border-bottom: 1px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        .summary-box {
+            background-color: #f8f9fa;
+            border-left: 5px solid #e74c3c;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .summary-box p {
+            margin: 0;
+            font-size: 16px;
+        }
+        .metrics-grid {
+            display: table;
+            width: 100%;
+            margin-bottom: 30px;
+            border-collapse: collapse;
+        }
+        .metrics-row {
+            display: table-row;
+        }
+        .metrics-cell {
+            display: table-cell;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            width: 50%;
+        }
+        .metrics-label {
+            font-weight: bold;
+            color: #7f8c8d;
+            font-size: 14px;
+            display: block;
+        }
+        .metrics-value {
+            font-size: 18px;
+            color: #2c3e50;
+            display: block;
+            margin-top: 5px;
+        }
+        .actions-box {
+            background-color: #e8f4f8;
+            border: 1px solid #b3e0f2;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+        .plot-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ecf0f1;
+        }
+        .chart-legend {
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: left;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fcfcfc;
+            border: 1px dashed #ecf0f1;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>Thermoneural Engine</h1>
+            <div style="font-size: 18px; color: #7f8c8d; margin-top: 5px;">Forensic Root-Cause Analysis Report</div>
+        </div>
+        <div class="meta">
+            <div><strong>Generated:</strong> {{ generation_date }}</div>
+            <div><strong>Status:</strong> Confidential</div>
+        </div>
+    </div>
+    
+    <h2>Executive Summary</h2>
+    <div class="summary-box">
+        <p>The Thermoneural AI Engine has analyzed the provided cryogenic sensor logs. Anomaly detection algorithms have identified a pattern consistent with a <strong>{{ analysis.failure_mode }}</strong>.</p>
+        <p style="margin-top: 10px;"><strong>Confidence Score:</strong> {{ analysis.confidence }}%</p>
+        <p style="margin-top: 5px;"><strong>Severity:</strong> {{ analysis.severity }}</p>
+        <p style="margin-top: 5px;"><strong>Likely Root Cause:</strong> {{ analysis.likely_root_cause }}</p>
+        <p style="margin-top: 5px;"><strong>Downtime Risk:</strong> {{ analysis.downtime_risk }}</p>
+    </div>
+
+    <h2>Metrics Breakdown</h2>
+    <div class="metrics-grid">
+        <div class="metrics-row">
+            <div class="metrics-cell">
+                <span class="metrics-label">Peak Temperature During Anomaly</span>
+                <span class="metrics-value">{{ analysis.peak_temp }}</span>
+            </div>
+            <div class="metrics-cell">
+                <span class="metrics-label">Peak Vibration During Anomaly</span>
+                <span class="metrics-value">{{ analysis.peak_vib }}</span>
+            </div>
+        </div>
+        <div class="metrics-row">
+            <div class="metrics-cell">
+                <span class="metrics-label">Peak Pressure During Anomaly</span>
+                <span class="metrics-value">{{ analysis.peak_pressure }}</span>
+            </div>
+            <div class="metrics-cell">
+                <span class="metrics-label">Peak Current During Anomaly</span>
+                <span class="metrics-value">{{ analysis.peak_current }}</span>
+            </div>
+        </div>
+        <div class="metrics-row">
+            <div class="metrics-cell">
+                <span class="metrics-label">Estimated Time to Failure (ETF)</span>
+                <span class="metrics-value">{{ analysis.etf }}</span>
+            </div>
+            <div class="metrics-cell">
+                <span class="metrics-label">Overall Status</span>
+                <span class="metrics-value" style="color: #e74c3c;">Critical Attention Required</span>
+            </div>
+        </div>
+    </div>
+    
+    <h2>Financial Risk Assessment</h2>
+    <div class="summary-box" style="border-left-color: #f39c12; background-color: #fdfbf7;">
+        <p>If the <strong>{{ analysis.failure_mode }}</strong> is not addressed proactively, the following financial impacts are estimated based on historical downtime averages:</p>
+        <ul style="font-size: 16px; margin-top: 10px; margin-bottom: 0;">
+            <li><strong>Estimated Downtime Cost:</strong> {{ analysis.downtime_cost }}</li>
+            <li><strong>Estimated Repair Cost:</strong> {{ analysis.repair_cost }}</li>
+            <li style="color: #c0392b; margin-top: 5px;"><strong>Total Risk Exposure: {{ analysis.total_risk }}</strong></li>
+        </ul>
+    </div>
+    
+    <h2>Recommended Actions</h2>
+    <div class="actions-box">
+        <strong>Immediate Next Steps:</strong><br>
+        {{ analysis.actions }}
+    </div>
+    
+    <div class="plot-section">
+        <h2>Data Visualization</h2>
+        <img src="{{ plot_path }}" alt="Data Plot">
+        
+        <div class="chart-legend">
+            <strong>How to read this chart:</strong> This visualization displays historical sensor data across two stacked subplots. The top chart tracks Temperature (blue line), while the bottom chart tracks Vibration (green line). 
+            Red markers (<strong>X</strong> and <strong>+</strong>) highlight the exact moments the Isolation Forest algorithm flagged the data as anomalous, indicating the onset of the mechanical failure.
+        </div>
+    </div>
+</body>
+</html>

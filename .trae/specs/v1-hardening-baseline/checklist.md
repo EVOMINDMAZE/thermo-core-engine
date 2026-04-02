@@ -1,0 +1,6 @@
+- [x] `pyproject.toml` is created and correctly separates runtime and dev dependencies.
+- [x] The codebase passes `ruff check` and `ruff format` cleanly.
+- [x] GitHub Actions CI workflow (`.github/workflows/ci.yml`) is implemented and configured correctly.
+- [x] The Streamlit UI displays a clear, actionable error message if an invalid CSV (e.g., missing timestamps) is uploaded.
+- [x] The `AnomalyDetector` pipeline handles `NaN` values natively using an imputer without crashing.
+- [x] All unit and E2E tests pass successfully.

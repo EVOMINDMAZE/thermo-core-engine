@@ -1,0 +1,7 @@
+- [x] `physics_checks.py` exists and successfully calculates a physics residual column based on thermodynamic relationships.
+- [x] The `AnomalyDetector` incorporates the physics residual as a feature in its `IsolationForest` pipeline.
+- [x] The engine outputs an `anomaly_score_std` or confidence interval, and the UI displays it as "85% ± X%".
+- [x] A local SQLite database (`history.db`) records every run's outputs, including `asset_id`, `failure_mode`, and `total_risk`.
+- [x] `generate_sensor_data` can generate multiple assets, and the `validation.py` script ensures an `asset_id` column exists.
+- [x] The Streamlit UI features a "Fleet Overview" tab when multiple assets are present, ranking them by risk.
+- [x] All unit and E2E tests pass, covering the new physics residuals, UQ intervals, SQLite logging, and multi-asset handling.

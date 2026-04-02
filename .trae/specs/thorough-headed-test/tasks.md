@@ -1,0 +1,15 @@
+# Tasks
+- [x] Task 1: Create Headed Debugging Script
+  - [x] SubTask 1.1: Create `scripts/debug_headed_test.py` using `playwright.sync_api`.
+  - [x] SubTask 1.2: Configure `sync_playwright()` to launch Chromium with `headless=False` and `slow_mo=1000` (1 second per action) so a human can watch what is going on.
+  - [x] SubTask 1.3: Add a console listener (`page.on("console", lambda msg: print(f"Browser Console: {msg.text}"))`) to capture silent UI errors.
+- [x] Task 2: Implement Thorough Test Flow
+  - [x] SubTask 2.1: The script must navigate to `http://localhost:8501`.
+  - [x] SubTask 2.2: It must adjust the "Number of Assets" slider to 2 or 3 to trigger the "Fleet Overview" tab.
+  - [x] SubTask 2.3: It must click "Generate Synthetic Data" and wait for the success message.
+  - [x] SubTask 2.4: It must click "Run Analysis" and wait for the Fleet Overview table to appear.
+  - [x] SubTask 2.5: It must select a specific asset (e.g., "Asset-1") from the dropdown in the "Asset Details" tab.
+  - [x] SubTask 2.6: It must take a screenshot of the "Executive Summary" and then switch to the "Technical Diagnostics" tab to take a screenshot of the Radar Chart.
+- [x] Task 3: Verify and Fix
+  - [x] SubTask 3.1: Run the script manually to observe the application's behavior.
+  - [x] SubTask 3.2: If the headed test identifies any broken selectors or missing elements (like the PDF download button or Radar chart), update `app.py` or the test script to fix them.

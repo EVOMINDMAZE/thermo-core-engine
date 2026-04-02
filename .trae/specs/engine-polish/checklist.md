@@ -1,0 +1,6 @@
+- [x] A structured logger is configured and outputs to a file (e.g., `thermoneural.log`).
+- [x] Uploading data and running an analysis generates trace logs for the validation, model fitting, and expert system rules.
+- [x] `AnomalyDetector` successfully applies a rolling window smoothing function to noisy data before prediction.
+- [x] The `IsolationForest` contamination parameter is set dynamically based on the input dataset rather than a hardcoded default.
+- [x] The `expert_system.py` can successfully diagnose "Refrigerant Leak", "Bearing Failure", and "Motor Overload".
+- [x] All unit tests pass, covering the new failure modes and preprocessing logic.

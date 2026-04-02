@@ -1,0 +1,14 @@
+streamlit
+pandas
+scikit-learn
+plotly
+weasyprint
+jinja2
+joblib
+
+[dev]
+pytest
+playwright
+pymupdf
+pytest-playwright
+ruff

@@ -1,0 +1,35 @@
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://10.2.0.2:8501
+  External URL: http://149.22.80.62:8501
+
+  For better performance, install the Watchdog module:
+
+  $ xcode-select --install
+  $ pip install watchdog
+            
+2026-03-31 23:05:39.305 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+2026-03-31 23:05:39.384 Please replace `use_container_width` with `width`.
+
+`use_container_width` will be removed after 2025-12-31.
+
+For `use_container_width=True`, use `width='stretch'`. For `use_container_width=False`, use `width='content'`.
+Task exception was never retrieved
+future: <Task finished name='Task-193' coro=<WebSocketProtocol13.write_message.<locals>.wrapper() done, defined at /Users/riad/Thermo-core/venv/lib/python3.11/site-packages/tornado/websocket.py:1111> exception=WebSocketClosedError()>
+Traceback (most recent call last):
+  File "/Users/riad/Thermo-core/venv/lib/python3.11/site-packages/tornado/websocket.py", line 1113, in wrapper
+    await fut
+tornado.iostream.StreamClosedError: Stream is closed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/riad/Thermo-core/venv/lib/python3.11/site-packages/tornado/websocket.py", line 1115, in wrapper
+    raise WebSocketClosedError()
+tornado.websocket.WebSocketClosedError

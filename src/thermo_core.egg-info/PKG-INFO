@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: thermo-core
+Version: 0.1.0
+Summary: Thermo-core project
+Requires-Python: >=3.11
+Requires-Dist: streamlit
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: plotly
+Requires-Dist: weasyprint
+Requires-Dist: jinja2
+Requires-Dist: joblib
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: playwright; extra == "dev"
+Requires-Dist: pymupdf; extra == "dev"
+Requires-Dist: pytest-playwright; extra == "dev"
+Requires-Dist: ruff; extra == "dev"

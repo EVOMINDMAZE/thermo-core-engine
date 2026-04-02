@@ -1,0 +1,6 @@
+- [x] `scripts/debug_headed_test.py` is created and runs Playwright with `headless=False` and `slow_mo` enabled.
+- [x] The script successfully captures and prints all browser console messages.
+- [x] The test navigates the multi-asset synthetic data generation process to trigger the "Fleet Overview" tab.
+- [x] The script clicks into an individual asset to view the "Executive Summary" and "Technical Diagnostics" tabs.
+- [x] The script captures diagnostic screenshots (e.g., `debug_summary.png`, `debug_diagnostics.png`).
+- [x] The script completes its run without any Playwright timeout errors, proving the UI renders successfully.

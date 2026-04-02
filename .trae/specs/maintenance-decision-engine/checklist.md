@@ -1,0 +1,7 @@
+- [ ] `rules.yaml` contains `severity`, `likely_root_cause`, and `downtime_risk` for all defined failure modes.
+- [ ] `expert_system.py` correctly parses and returns the new fields (`severity`, `likely_root_cause`, `downtime_risk`) with proper fallbacks, and `confidence` is standardized as a strictly numeric value (0-100).
+- [ ] `app.py` displays one new top summary block with all requested fields (Failure mode, confidence %, severity, likely root cause, recommended action, and downtime risk).
+- [ ] The Top Summary Block uses the correct severity ordering and color mapping: Normal (Green), Low (Blue), Medium (Yellow), High (Orange), Critical (Red).
+- [ ] PDF report includes the new `severity`, `likely_root_cause`, and `downtime_risk` fields in its Executive Summary section.
+- [ ] E2E tests assert exact parity between the PDF report values and the on-screen summary for all key metrics.
+- [ ] All unit and E2E tests pass.
