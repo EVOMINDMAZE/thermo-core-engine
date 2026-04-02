@@ -66,15 +66,23 @@ class AnomalyDetector:
             X[X_numeric.columns] = X_numeric.rolling(window=smoothing_window, min_periods=1).mean()
 
         if self.contamination == "auto":
-            numeric_X = X.select_dtypes(include='number')
+            # Calculate kurtosis ONLY on the raw features, not the derived ones
+            # Derived features like diff and var are highly spiky and will artificially inflate kurtosis
+            numeric_X = X[features].select_dtypes(include='number') if features else df.select_dtypes(include='number')
+            
             if not numeric_X.empty:
                 mean_variance = numeric_X.var(skipna=True).mean()
                 mean_kurtosis = numeric_X.kurtosis(skipna=True).mean()
 
                 if pd.isna(mean_kurtosis):
-                    dynamic_contam = 0.1
+                    dynamic_contam = 0.05
                 else:
-                    dynamic_contam = min(0.5, max(0.01, 0.05 + 0.01 * mean_kurtosis))
+                    # Invert the relationship: Higher kurtosis means outliers are more extreme/easier to separate,
+                    # so we need a LOWER contamination rate. 
+                    # Also cap the absolute maximum contamination at 0.15 (15%) instead of 0.5 (50%)
+                    # Base is 0.10. For every unit of kurtosis, we subtract a small amount.
+                    calculated = 0.10 - (0.001 * mean_kurtosis)
+                    dynamic_contam = min(0.15, max(0.01, calculated))
 
                 logger.info(f"Dynamically calculated contamination: {dynamic_contam:.4f} "
                             f"(variance={mean_variance:.2f}, kurtosis={mean_kurtosis:.2f})")
