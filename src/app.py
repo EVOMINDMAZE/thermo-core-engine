@@ -341,27 +341,33 @@ def main():
                 """, unsafe_allow_html=True)
 
                 # 5. Report Generation
-                with st.spinner("Generating PDF Report..."):
-                    with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_pdf:
-                        pdf_path = tmp_pdf.name
+                asset_id = df_results['asset_id'].iloc[0] if 'asset_id' in df_results.columns else "Asset"
+                report_key = f"pdf_bytes_{asset_id}"
+                
+                if report_key not in st.session_state:
+                    if st.button(f"Generate PDF Report for {asset_id}"):
+                        with st.spinner("Generating PDF Report..."):
+                            with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp_pdf:
+                                pdf_path = tmp_pdf.name
 
-                    generate_pdf_report(df_results, analysis, pdf_path)
+                            generate_pdf_report(df_results, analysis, pdf_path)
 
-                    with open(pdf_path, "rb") as pdf_file:
-                        pdf_bytes = pdf_file.read()
+                            with open(pdf_path, "rb") as pdf_file:
+                                st.session_state[report_key] = pdf_file.read()
 
+                            # Cleanup
+                            try:
+                                os.unlink(pdf_path)
+                            except Exception:
+                                pass
+                            st.rerun()
+                else:
                     st.download_button(
                         label="📄 Download RCA Report (PDF)",
-                        data=pdf_bytes,
-                        file_name="Thermoneural_RCA_Report.pdf",
+                        data=st.session_state[report_key],
+                        file_name=f"Thermoneural_RCA_{asset_id}.pdf",
                         mime="application/pdf"
                     )
-
-                    # Cleanup
-                    try:
-                        os.unlink(pdf_path)
-                    except Exception:
-                        pass
 
             def render_tech_diag(df_results, anomalies):
                 st.write("### Technical Diagnostics & Insights")
@@ -470,14 +476,14 @@ def main():
                         color = all_possible_sensors[s]['color']
                         
                         # Base line
-                        fig.add_trace(go.Scatter(x=df_base['timestamp'], y=df_base[s],
+                        fig.add_trace(go.Scattergl(x=df_base['timestamp'], y=df_base[s],
                                                  mode='lines', name=all_possible_sensors[s]['name'],
                                                  line=dict(color=color, width=1), opacity=0.7),
                                       row=row_idx, col=1)
 
                         # Anomalies overlay
                         if not anomalies.empty:
-                            fig.add_trace(go.Scatter(x=anomalies['timestamp'], y=anomalies[s],
+                            fig.add_trace(go.Scattergl(x=anomalies['timestamp'], y=anomalies[s],
                                                      mode='markers', name=f"{all_possible_sensors[s]['name']} Anomaly",
                                                      marker=dict(color='red', size=6, symbol='x')),
                                           row=row_idx, col=1)
@@ -504,7 +510,8 @@ def main():
                     fig2 = px.scatter(df_scatter, x='timestamp', y='anomaly_score', color='is_anomaly',
                                      color_discrete_map={True: 'red', False: 'blue'},
                                      labels={'anomaly_score': 'Decision Score', 'is_anomaly': 'Flagged'},
-                                     title='Model Decision Function Scores')
+                                     title='Model Decision Function Scores',
+                                     render_mode='webgl')
                     st.plotly_chart(fig2, use_container_width=True)
                 except Exception:
                     st.write("Decision score visualization unavailable.")
